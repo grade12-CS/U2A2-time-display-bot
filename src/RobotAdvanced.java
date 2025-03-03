@@ -59,6 +59,10 @@ public class RobotAdvanced extends Robot {
         return getStreet();
     }
 
+    public Point getPos() {
+        return new Point(getX(), getY());
+    }
+
     /**
      * turns robot to the right by turning left three times.
      */
@@ -143,6 +147,10 @@ public class RobotAdvanced extends Robot {
         turnThenMove(y > 0 ? Direction.NORTH : Direction.SOUTH, Math.abs(y)); 
     }
 
+    public void move(Point point) {
+        move(point.x, point.y);
+    }
+
     /**
      * moves robot x spaces horizontally and y spaces vertically while putting things. 
      * @param x the x coordinate robot will move to
@@ -159,6 +167,10 @@ public class RobotAdvanced extends Robot {
             super.putThing();
             super.move();
         }, Math.abs(y));
+    }
+
+    public void putThenMove(Point point) {
+        putThenMove(point.x, point.y);
     }
 
     /**
