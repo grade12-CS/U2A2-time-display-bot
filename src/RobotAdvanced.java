@@ -145,20 +145,27 @@ public class RobotAdvanced extends Robot {
 
     /**
      * moves robot x spaces horizontally and y spaces vertically while putting things. 
-     * @param x the x coordinate robot will move to
-     * @param y the y coordinate robot will move to
+     * @param x times robot moves horizontally, left is positive
+     * @param y times robot moves vertically, up is positive
      */
     public void putThenMove(int x, int y) {
         turn(x > 0 ? Direction.EAST : Direction.WEST);
         repeat(() -> {
-            super.putThing();
+            this.putThing();
             super.move();
         }, Math.abs(x));
         turn(y > 0 ? Direction.NORTH : Direction.SOUTH);
         repeat(() -> {
-            super.putThing();
+            this.putThing();
             super.move();
         }, Math.abs(y));
+    }
+
+    @Override
+    public void putThing(){
+        if(frontIsClear()){
+            super.putThing();
+        }
     }
 
     /**
