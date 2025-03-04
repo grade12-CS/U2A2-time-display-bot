@@ -12,7 +12,6 @@ public class Number4 extends NumberBot{
         putThenMove(0, -2);
         putThenMove(2, 2);
         putThenMove(0, -4);
-        putThing();
     }
 
 }

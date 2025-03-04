@@ -163,7 +163,7 @@ public class RobotAdvanced extends Robot {
 
     @Override
     public void putThing(){
-        if(frontIsClear()){
+        if(!this.canPickThing()){
             super.putThing();
         }
     }

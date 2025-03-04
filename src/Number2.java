@@ -12,7 +12,6 @@ public class Number2 extends NumberBot{
         putThenMove(2, -2);
         putThenMove(-2, -2);
         putThenMove(2, 0);
-        putThing();
     }
 
 }

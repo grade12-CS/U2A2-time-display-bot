@@ -19,6 +19,7 @@ public abstract class NumberBot extends RobotAdvanced{
 
     public void printAndLocate(int num){
         printNum();
+        putThing();
         locate(num);
     }
 

@@ -11,7 +11,6 @@ public class Number1 extends NumberBot{
     public void printNum() {
         moveForward(2);
         putThenMove(0, -4);
-        putThing();
     }
 
 }
