@@ -2,15 +2,15 @@ import becker.robots.*;
 import java.awt.Color;
 
 /**
- * includes advanced methods utilizing points
+ * includes advanced methods utilizing points 
  */
 public class RobotAdvanced extends RobotSE {
     private Color thingColor = Color.BLACK;
 
     /**
      * @param city city that will be displayed to the map 
-     * @param x the x coordinate of the starting point
-     * @param y the y coordinate of the starting point
+     * @param x the x coordinate of the starting position 
+     * @param y the y coordinate of the starting position
      * @param direction initial robot heading
      * @param things initial number of things robot holds
      */
@@ -20,10 +20,11 @@ public class RobotAdvanced extends RobotSE {
 
     /**
      * @param city city that will be displayed to the map 
-     * @param x the x coordinate of the starting point
-     * @param y the y coordinate of the starting point
+     * @param x the x coordinate of the starting position
+     * @param y the y coordinate of the starting position 
      * @param direction initial robot heading
      * @param things initial number of things robot holds
+     * *default number of things: 999.
      */
     public RobotAdvanced(City city, int x, int y, Direction direction) {
         super(city, y, x, direction, 999);
@@ -31,9 +32,10 @@ public class RobotAdvanced extends RobotSE {
 
     /**
      * @param city city that will be displayed to the map 
-     * @param x the x coordinate of the starting point
-     * @param y the y coordinate of the starting point
+     * @param x the x coordinate of the starting position 
+     * @param y the y coordinate of the starting position 
      * @param things initial number of things robot holds
+     * *default heading: North.
      */
     public RobotAdvanced(City city, int x, int y, int things) {
         super(city, y, x, Direction.NORTH, things);
@@ -41,27 +43,34 @@ public class RobotAdvanced extends RobotSE {
 
     /**
      * @param city city that will be displayed to the map 
-     * @param x the x coordinate of the starting point
-     * @param y the y coordinate of the starting point
+     * @param x the x coordinate of the starting position 
+     * @param y the y coordinate of the starting position 
+     * *default heading: North.
      */
     public RobotAdvanced(City city, int x, int y) {
         super(city, y, x, Direction.NORTH, 999);
     }
 
     /**
-     * returns the x coordinate of the current robot position on the map. 
+     * 
+     * @return returns the x coordinate (avenue) of the current robot position on the map.
      */
     public int getX() {
         return getAvenue();
     }
 
     /**
-     * returns the y coordinate of the current robot position on the map. 
+     * 
+     * @return the y coordinate (street) of the current robot position on the map.
      */
     public int getY() {
         return getStreet();
     }
 
+    /**
+     * 
+     * @return current position in 2d coordinates
+     */
     public Point getPos() {
         return new Point(getX(), getY());
     }
@@ -163,14 +172,25 @@ public class RobotAdvanced extends RobotSE {
         }, Math.abs(y));
     }
 
+    /**
+     * 
+     * @param point point to move
+     */
     public void putThenMove(Point point) {
         putThenMove(point.x, point.y);
     }
 
+    /**
+     * 
+     * @param color colour of thing to put. puts thing at the current robot's position
+     */
     public void putThing(Color color) {
         new Thing(getCity(), getY(), getX()).setColor(color);
     }
     
+    /**
+     * puts thing in defined colour of thing
+     */
     @Override
     public void putThing() {
         putThing(thingColor);
@@ -186,22 +206,34 @@ public class RobotAdvanced extends RobotSE {
     }
 
     /**
-     * movs robot to Point(x, y), relative to the robot.
+     * movs robot to point(x, y), relative to the robot.
      * @param point the point the robot will move to.
      */
     public void goTo(Point point) {
         goTo(point.x, point.y);
     }
 
+    /**
+     * sets robot's transparency. (transparent at 0.0, opaque at 1.0)
+     * @param value transparency of robot (0.0 ~ 1.0) 
+     */
     @Override
     public void setTransparency(double value) {
         getIcon().setTransparency(Math.abs(1 - value));
     }
 
+    /**
+     * sets colour of robot
+     * @param color colour of robot to change
+     */
     public void setRobotColor(Color color) {
         getIcon().setColor(color);
     }
 
+    /**
+     * sets colour of thing
+     * @param color colour of thing to change
+     */
     public void setThingColor(Color color) {
         this.thingColor = color;
     }

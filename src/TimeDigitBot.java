@@ -9,7 +9,7 @@ public class TimeDigitBot extends NumberBot{
     }
     
     public TimeDigitBot(City city, int x, int y) {
-        super(city, x, y, Direction.NORTH, 999);
+        super(city, x, y);
     }
 
     public static final HashMap<Integer, Point[]> digitsmap = new HashMap<Integer, Point[]>() {{
@@ -26,7 +26,7 @@ public class TimeDigitBot extends NumberBot{
     }};
 
     @Override
-    public void draw_digit(int digit) {
+    public void drawDigit(int digit) {
         randomlySetThingColour();
         Point[] points = digitsmap.get(digit);
         for (Point point : points) {

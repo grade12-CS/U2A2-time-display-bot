@@ -5,7 +5,11 @@ public abstract class NumberBot extends RobotAdvanced {
         super(city, x, y, direction, things);
     }
 
-    public abstract void draw_digit(int digit);
+    public NumberBot(City city, int x, int y) {
+        super(city, x, y);
+    }
+
+    public abstract void drawDigit(int digit);
 
     public abstract void remove();
 }
