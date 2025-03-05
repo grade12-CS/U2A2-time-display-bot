@@ -1,4 +1,5 @@
 import becker.robots.*;
+import java.awt.Color;
 import java.util.HashMap;
 
 public class TimeBot extends NumberBot{
@@ -26,6 +27,7 @@ public class TimeBot extends NumberBot{
 
     @Override
     public void draw_digit(int digit) {
+        randomlySetThingColour();
         Point[] points = digitsmap.get(digit);
         for (Point point : points) {
             if (point.putThing) {
@@ -34,5 +36,18 @@ public class TimeBot extends NumberBot{
                 move(point);
             }
         }
+    }
+
+    @Override
+    public void remove() {
+
+    }
+
+    public void randomlySetThingColour() {
+        int r = (int) (Math.round(Math.random() * 255));
+        int g = (int) (Math.round(Math.random() * 255));
+        int b = (int) (Math.round(Math.random() * 255));
+        Color color = new Color(r, g, b);
+        setThingColor(color);
     }
 }

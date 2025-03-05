@@ -1,9 +1,13 @@
 import becker.robots.*;
+import java.awt.Color;
+import java.util.Random;
 
 /**
  * includes advanced methods utilizing points
  */
-public class RobotAdvanced extends Robot {
+public class RobotAdvanced extends RobotSE {
+    private Color thingColor = Color.BLACK;
+
     /**
      * @param city city that will be displayed to the map 
      * @param x the x coordinate of the starting point
@@ -12,7 +16,7 @@ public class RobotAdvanced extends Robot {
      * @param things initial number of things robot holds
      */
     public RobotAdvanced(City city, int x, int y, Direction direction, int things) {
-        super(city, x, y, direction, things);
+        super(city, y, x, direction, things);
     }
 
     /**
@@ -23,7 +27,7 @@ public class RobotAdvanced extends Robot {
      * @param things initial number of things robot holds
      */
     public RobotAdvanced(City city, int x, int y, Direction direction) {
-        super(city, x, y, direction, 0);
+        super(city, y, x, direction, 999);
     }
 
     /**
@@ -33,7 +37,7 @@ public class RobotAdvanced extends Robot {
      * @param things initial number of things robot holds
      */
     public RobotAdvanced(City city, int x, int y, int things) {
-        super(city, x, y, Direction.NORTH, things);
+        super(city, y, x, Direction.NORTH, things);
     }
 
     /**
@@ -42,7 +46,7 @@ public class RobotAdvanced extends Robot {
      * @param y the y coordinate of the starting point
      */
     public RobotAdvanced(City city, int x, int y) {
-        super(city, x, y, Direction.NORTH, 0);
+        super(city, y, x, Direction.NORTH, 999);
     }
 
     /**
@@ -61,15 +65,6 @@ public class RobotAdvanced extends Robot {
 
     public Point getPos() {
         return new Point(getX(), getY());
-    }
-
-    /**
-     * turns robot to the right by turning left three times.
-     */
-    public void turnRight() {
-        turnLeft();
-        turnLeft();
-        turnLeft();
     }
 
     /**
@@ -114,7 +109,7 @@ public class RobotAdvanced extends Robot {
     public void moveForward(int n) {
         if (n <= 0) return;
         repeat(() -> {
-            super.move();
+            move();
         }, n);
     }
 
@@ -159,18 +154,30 @@ public class RobotAdvanced extends Robot {
     public void putThenMove(int x, int y) {
         turn(x > 0 ? Direction.EAST : Direction.WEST);
         repeat(() -> {
-            super.putThing();
-            super.move();
+            putThing();
+            move();
         }, Math.abs(x));
         turn(y > 0 ? Direction.NORTH : Direction.SOUTH);
         repeat(() -> {
-            super.putThing();
-            super.move();
+            putThing();
+            move();
         }, Math.abs(y));
     }
 
     public void putThenMove(Point point) {
         putThenMove(point.x, point.y);
+    }
+
+    public void putThing(Color color) {
+        new Thing(getCity(), getY(), getX()).setColor(color);
+    }
+
+    public void putThing() {
+        putThing(thingColor);
+    }
+    
+    public void setThingColor(Color color) {
+        this.thingColor = color;
     }
 
     /**

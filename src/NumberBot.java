@@ -6,4 +6,6 @@ public abstract class NumberBot extends RobotAdvanced {
     }
 
     public abstract void draw_digit(int digit);
+
+    public abstract void remove();
 }

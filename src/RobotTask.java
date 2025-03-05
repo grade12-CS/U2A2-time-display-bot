@@ -1,4 +1,5 @@
 import becker.robots.*;
+import java.awt.Color;
 import java.time.LocalTime;
  
 public class RobotTask {
@@ -10,13 +11,13 @@ public class RobotTask {
 		// build a random city called waterloo
 		City field = new City(100, 100);
 		TimeBot r1 = new TimeBot(field, 0, 0);
-		TimeBot r2 = new TimeBot(field, 0, 7);
-		TimeBot r3 = new TimeBot(field, 0, 13);
-		TimeBot r4 = new TimeBot(field, 0, 20);
+		TimeBot r2 = new TimeBot(field, 7, 0);
+		TimeBot r3 = new TimeBot(field, 15, 0);
+		TimeBot r4 = new TimeBot(field, 22, 0);
 		
 		//for format
-		new Thing(field, 2, 14);
-		new Thing(field, 4, 14);
+		new Thing(field, 2, 13).setColor(Color.BLACK);
+		new Thing(field, 4, 13).setColor(Color.BLACK);
 		
 		String time = LocalTime.now().toString();
 		System.err.println(time);
