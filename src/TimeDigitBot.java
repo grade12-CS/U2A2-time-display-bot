@@ -1,8 +1,11 @@
 import becker.robots.*;
 import java.awt.Color;
 import java.util.HashMap;
+import java.util.Stack;
 
 public class TimeDigitBot extends NumberBot{
+    public int lastDrawnDigit;
+    private final Stack<Point> stk = new Stack<>();
 
     public TimeDigitBot(City city, int x, int y, Direction direction, int things) {
         super(city, x, y, direction, things);
@@ -27,9 +30,11 @@ public class TimeDigitBot extends NumberBot{
 
     @Override
     public void drawDigit(int digit) {
+        lastDrawnDigit = digit;
         randomlySetThingColour();
         Point[] points = digitsmap.get(digit);
         for (Point point : points) {
+            stk.push(point);
             if (point.putThing) {
                 putThenMove(point);
             } else {
@@ -40,7 +45,26 @@ public class TimeDigitBot extends NumberBot{
 
     @Override
     public void remove() {
-
+        while (!stk.isEmpty()) {
+            Point p = stk.lastElement();
+            Direction dir = (p.y > 0) ? Direction.SOUTH : Direction.NORTH;
+            turn(dir);
+            repeat(() -> {
+                while (canPickThing()) {
+                    pickThing();
+                }
+                move();
+            }, Math.abs(p.y));
+            dir = (p.x > 0) ? Direction.WEST : Direction.EAST;
+            turn(dir);
+            repeat(() -> {
+                while (canPickThing()) {
+                    pickThing();
+                }
+                move();
+            }, Math.abs(p.x));
+            stk.pop();
+        }
     }
 
     public void randomlySetThingColour() {

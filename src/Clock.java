@@ -33,6 +33,7 @@ public class Clock {
     
     /**
      * initializes robots and threads needed to function clock.
+     * displays time in HH : MM
      * @param x_offset clock position x offset
      * @param y_offset clock position y offset
      */
@@ -92,5 +93,12 @@ public class Clock {
         r2.setRobotColor(color);
         r3.setRobotColor(color);
         r4.setRobotColor(color);
+    }
+
+    public void reset() {
+        thread1 = new Thread(() -> {
+            r1.remove();
+		});
+        thread1.start();
     }
 }
