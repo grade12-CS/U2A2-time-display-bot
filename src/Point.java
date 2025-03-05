@@ -7,8 +7,8 @@ public class Point {
 
 	/**
 	 * 
-	 * @param x x coordinate
-	 * @param y y coordinate
+	 * @param x displacement in x-axis (horizontal) 
+	 * @param y displacement in y-axis (vertical) 
 	 */
 	public Point(int x, int y) {
 		this.x = x;

@@ -2,13 +2,13 @@ import becker.robots.*;
 import java.awt.Color;
 import java.util.HashMap;
 
-public class TimeBot extends NumberBot{
+public class TimeDigitBot extends NumberBot{
 
-    public TimeBot(City city, int x, int y, Direction direction, int things) {
+    public TimeDigitBot(City city, int x, int y, Direction direction, int things) {
         super(city, x, y, direction, things);
     }
     
-    public TimeBot(City city, int x, int y) {
+    public TimeDigitBot(City city, int x, int y) {
         super(city, x, y, Direction.NORTH, 999);
     }
 
@@ -20,7 +20,7 @@ public class TimeBot extends NumberBot{
         put(4, new Point[]{new Point(0, -3), new Point(4, 4), new Point(0, -3, false), new Point(0, -5), new Point(2, 7, false)});
         put(5, new Point[]{new Point(5, 0), new Point(-5, 0, false), new Point(0, -3), new Point(4, -3), new Point(-5, 0), new Point(7, 6, false)});
         put(6, new Point[]{new Point(5, 0), new Point(-5, 0, false), new Point(0, -3), new Point(4, -3), new Point(-4, 3), new Point(6, 3, false)});
-        put(7, new Point[]{new Point(4, -6), new Point(2, 6, false)});
+        put(7, new Point[]{new Point(4, -7), new Point(2, 7, false)});
         put(8, new Point[]{new Point(4, -6), new Point(-4, 6), new Point(0, -3, false), new Point(4, 0), new Point(2, 3, false)});
         put(9, new Point[]{new Point(4, -6), new Point(-5, 0), new Point(1, 3, false), new Point(4, 0), new Point(-4, 0, false), new Point(0, 3), new Point(6, 0, false)});
     }};

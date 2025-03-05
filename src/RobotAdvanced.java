@@ -1,6 +1,5 @@
 import becker.robots.*;
 import java.awt.Color;
-import java.util.Random;
 
 /**
  * includes advanced methods utilizing points
@@ -171,15 +170,12 @@ public class RobotAdvanced extends RobotSE {
     public void putThing(Color color) {
         new Thing(getCity(), getY(), getX()).setColor(color);
     }
-
+    
+    @Override
     public void putThing() {
         putThing(thingColor);
     }
     
-    public void setThingColor(Color color) {
-        this.thingColor = color;
-    }
-
     /**
      * moves robot to (x, y) point relative to the robot.
      *  @param x the x coordinate robot will move to
@@ -195,6 +191,19 @@ public class RobotAdvanced extends RobotSE {
      */
     public void goTo(Point point) {
         goTo(point.x, point.y);
+    }
+
+    @Override
+    public void setTransparency(double value) {
+        getIcon().setTransparency(Math.abs(1 - value));
+    }
+
+    public void setRobotColor(Color color) {
+        getIcon().setColor(color);
+    }
+
+    public void setThingColor(Color color) {
+        this.thingColor = color;
     }
 }
 
