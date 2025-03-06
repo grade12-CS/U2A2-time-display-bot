@@ -62,7 +62,7 @@ public class Clock {
 		});
     }
     
-    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(4);
 
     public void scheduleUpdate(TimeDigitBot r, int index) {
         scheduler.scheduleWithFixedDelay(() -> {
