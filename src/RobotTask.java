@@ -11,6 +11,7 @@ public class RobotTask {
 		Clock clock = new Clock(field, 5, 5);
 		clock.setRobotTransparencies(0.3);
 		clock.setRobotColors(Color.BLUE);
+		clock.setRobotSpeeds(50);
 		clock.start();	
 	}
 }

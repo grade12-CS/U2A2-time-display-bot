@@ -1,6 +1,7 @@
 import becker.robots.*;
 import java.awt.Color;
 import java.time.LocalTime;
+import java.util.concurrent.*;
 
 /**
  * Clock clss using robots and multithreaded
@@ -42,27 +43,41 @@ public class Clock {
         r2 = new TimeDigitBot(field, 7 + x_offset, y_offset);
         r3 = new TimeDigitBot(field, 15 + x_offset, y_offset);
         r4 = new TimeDigitBot(field, 22+ x_offset, y_offset);
+
         //for format
         new Thing(field, 2 + x_offset, 13 + y_offset).setColor(Color.BLACK);
         new Thing(field, 4 + x_offset, 13 + y_offset).setColor(Color.BLACK);
 
-		String time = LocalTime.now().toString();
-		System.err.println(time);
-
 		thread1 = new Thread(() -> {
-			r1.drawDigit(Character.getNumericValue(time.charAt(0)));
+            scheduleUpdate(r1, 0);
 		});
 		thread2 = new Thread(() -> {
-			r2.drawDigit(Character.getNumericValue(time.charAt(1)));
+            scheduleUpdate(r2, 1);
 		});
 		thread3 = new Thread(() -> {
-			r3.drawDigit(Character.getNumericValue(time.charAt(3)));
+            scheduleUpdate(r3, 3);
 		});
 		thread4 = new Thread(() -> {
-			r4.drawDigit(Character.getNumericValue(time.charAt(4)));
+            scheduleUpdate(r4, 4);
 		});
     }
     
+    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+    public void scheduleUpdate(TimeDigitBot r, int index) {
+        scheduler.scheduleWithFixedDelay(() -> {
+            String time = LocalTime.now().toString();
+            System.out.println(time);
+            int digit = Character.getNumericValue(time.charAt(index));
+            if (r.lastDrawnDigit == -1) {
+                r.drawDigit(digit);
+            } else if (r.lastDrawnDigit != digit) {
+                r.remove();
+                r.drawDigit(digit);
+            }
+        }, 0, 1, TimeUnit.SECONDS);
+    }
+
     /**
      * starts running clock
      */
@@ -93,6 +108,13 @@ public class Clock {
         r2.setRobotColor(color);
         r3.setRobotColor(color);
         r4.setRobotColor(color);
+    }
+
+    public void setRobotSpeeds(double speed) {
+        r1.setSpeed(speed);
+        r2.setSpeed(speed);
+        r3.setSpeed(speed);
+        r4.setSpeed(speed);
     }
 
     public void reset() {

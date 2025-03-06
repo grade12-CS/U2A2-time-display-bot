@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Stack;
 
 public class TimeDigitBot extends NumberBot{
-    public int lastDrawnDigit;
+    public int lastDrawnDigit = -1;
     private final Stack<Point> stk = new Stack<>();
 
     public TimeDigitBot(City city, int x, int y, Direction direction, int things) {
@@ -65,6 +65,10 @@ public class TimeDigitBot extends NumberBot{
             }, Math.abs(p.x));
             stk.pop();
         }
+    }
+
+    public void clearLogs() {
+        stk.clear();
     }
 
     public void randomlySetThingColour() {
