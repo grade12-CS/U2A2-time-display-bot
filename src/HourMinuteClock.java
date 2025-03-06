@@ -6,18 +6,24 @@ import java.util.concurrent.*;
  * Clock that only displays hours and minutes.
  */
 public final class HourMinuteClock extends Clock {
-    private Thread thread1, thread2, thread3, thread4;
-    private TimeDigitBot r1, r2, r3, r4;
     /**
-     * helps schedule time update for each thread of robot.
+     * thread to run at the same time
      */
-    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(4);
-
+    private Thread thread1, thread2, thread3, thread4;
+    /**
+     * robot to draw digits
+     */
+    private TimeDigitBot r1, r2, r3, r4;
+    
+    /**
+     * 
+     * @param field field where the clock is created
+     */
     public HourMinuteClock(City field) {
         super(field);
-       initializeClock(0, 0); 
+        initializeClock(0, 0); 
     }     
-
+    
     /**
      * creates a clock 
      * @param field field to display time
@@ -28,6 +34,11 @@ public final class HourMinuteClock extends Clock {
         super(field);
         initializeClock(x_offset, y_offset);
     }
+    
+    /**
+     * scheduler for time digit robots to redraw digit on time change 
+     */
+    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(4);
 
     @Override
     protected void initializeClock(int x_offset, int y_offset) {
@@ -54,7 +65,6 @@ public final class HourMinuteClock extends Clock {
 		});
     }
     
-
     @Override
     public void start() {
         thread1.start();

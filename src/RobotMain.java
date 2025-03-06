@@ -1,5 +1,5 @@
 /**
- * project name: U2A2 Student Designed Bot (team project)
+ * project name: U2A2 Time Display Robot 
  * @author Sarah Yoo, Jiamiao Zheng
  * completed date: 2025 / 3 / 6
  */

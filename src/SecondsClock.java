@@ -3,18 +3,28 @@ import java.awt.Color;
 import java.util.concurrent.*;
 
 public final class SecondsClock extends Clock {
+    /**
+     * thread to run at the same time
+     */
     private Thread thread1, thread2;
+    /**
+     * robot to draw digits
+     */
     private TimeDigitBot r1, r2;
 
     public SecondsClock(City field) {
         super(field);
         initializeClock(0, 0);
     }
-
+    
     public SecondsClock(City field, int x_offset, int y_offset) {
         super(field);
         initializeClock(x_offset, y_offset);
     }
+
+    /**
+     * scheduler for time digit robots to redraw digit on time change 
+     */
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(2);
 
     @Override
@@ -28,8 +38,6 @@ public final class SecondsClock extends Clock {
             scheduleUpdate(r2, 7, scheduler, 0, 1, TimeUnit.MILLISECONDS);
 		});
     }
-    
-    
 
     @Override
     public void start() {

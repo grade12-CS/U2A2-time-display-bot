@@ -15,7 +15,6 @@ public abstract class NumberBot extends RobotAdvanced {
         super(city, x, y, direction, things);
     }
 
-
     /**
      * @param city city that will be displayed to the map 
      * @param x the x coordinate of the starting position 
