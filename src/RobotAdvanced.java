@@ -197,17 +197,17 @@ public class RobotAdvanced extends RobotSE {
     }
     
     /**
-     * moves robot to (x, y) point relative to the robot.
-     *  @param x the x coordinate robot will move to
-     *  @param y the y coordinate robot will move to
+     *  goes to the designated point relative to the field 
+     *  @param x the x coordinate robot will go to
+     *  @param y the y coordinate robot will go to
      */
     public void goTo(int x, int y) {
         move(x - getX(), getY() - y);
     }
 
     /**
-     * movs robot to point(x, y), relative to the robot.
-     * @param point the point the robot will move to.
+     * goes to the designated point relative to the field
+     * @param point the point the robot will go to.
      */
     public void goTo(Point point) {
         goTo(point.x, point.y);
