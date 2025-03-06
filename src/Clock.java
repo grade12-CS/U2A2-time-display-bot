@@ -116,11 +116,4 @@ public class Clock {
         r3.setSpeed(speed);
         r4.setSpeed(speed);
     }
-
-    public void reset() {
-        thread1 = new Thread(() -> {
-            r1.remove();
-		});
-        thread1.start();
-    }
 }
