@@ -202,7 +202,7 @@ public class RobotAdvanced extends RobotSE {
      *  @param y the y coordinate robot will move to
      */
     public void goTo(int x, int y) {
-        move(x - getX(), y - getY());
+        move(x - getX(), getY() - y);
     }
 
     /**
