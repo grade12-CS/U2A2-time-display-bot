@@ -62,9 +62,17 @@ public class Clock {
 		});
     }
     
+    /**
+     * helps schedule time update for each thread of robot.
+     */
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(4);
 
-    public void scheduleUpdate(TimeDigitBot r, int index) {
+    /**
+     * schedules time update for each TimeDigitBot. checks time changes in hour and minute digits every seconds. 
+     * @param r
+     * @param index
+     */
+    private void scheduleUpdate(TimeDigitBot r, int index) {
         scheduler.scheduleWithFixedDelay(() -> {
             String time = LocalTime.now().toString();
             System.out.println(time);
@@ -101,7 +109,7 @@ public class Clock {
 
     /**
      * sets colour of robots 
-     * @param color
+     * @param color colour of robot to appear
      */
     public void setRobotColors(Color color) {
         r1.setRobotColor(color);
@@ -110,6 +118,10 @@ public class Clock {
         r4.setRobotColor(color);
     }
 
+    /**
+     * sets speed of robots drawing and removing digits
+     * @param speed speed of robot
+     */
     public void setRobotSpeeds(double speed) {
         r1.setSpeed(speed);
         r2.setSpeed(speed);
