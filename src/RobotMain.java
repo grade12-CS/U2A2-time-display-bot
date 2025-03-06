@@ -1,7 +1,7 @@
 /**
- * project name: U2A2
+ * project name: U2A2 Student Designed Bot (team project)
  * @author Sarah Yoo, Jiamiao Zheng
- * completed date: 2025 / 3 /
+ * completed date: 2025 / 3 / 6
  */
 public class RobotMain {
 

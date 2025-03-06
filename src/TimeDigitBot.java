@@ -105,7 +105,7 @@ public class TimeDigitBot extends NumberBot{
     }
 
     /**
-     * assign a random r, g, b color to thing robot will put.
+     * assign a random RGB color to thing robot will put.
      */
     public void randomlySetThingColor() {
         int r = (int) (Math.round(Math.random() * 255));
