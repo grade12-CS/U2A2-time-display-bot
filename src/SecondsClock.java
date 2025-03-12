@@ -2,6 +2,9 @@ import becker.robots.*;
 import java.awt.Color;
 import java.util.concurrent.*;
 
+/**
+ * clock that only displays seconds
+ */
 public final class SecondsClock extends Clock {
     /**
      * thread to run at the same time
@@ -10,7 +13,7 @@ public final class SecondsClock extends Clock {
     /**
      * robot to draw digits
      */
-    private TimeDigitBot r1, r2;
+    private TimeDigitBot r1, r2;    
 
     public SecondsClock(City field) {
         super(field);
