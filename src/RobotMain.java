@@ -1,6 +1,7 @@
 /**
  * project name: U2A2 Time Display Robot 
- * @author Sarah Yoo, Jiamiao Zheng
+ * @author Sarah Yoo
+ * partner: Jiamiao Zheng
  * completed date: 2025 / 3 / 6
  */
 public class RobotMain {
